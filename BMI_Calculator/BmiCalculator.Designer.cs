@@ -187,6 +187,7 @@
             // 
             this.BmiResultBox.Location = new System.Drawing.Point(153, 218);
             this.BmiResultBox.Name = "BmiResultBox";
+            this.BmiResultBox.ReadOnly = true;
             this.BmiResultBox.Size = new System.Drawing.Size(100, 38);
             this.BmiResultBox.TabIndex = 4;
             // 

@@ -127,6 +127,22 @@ namespace BMI_Calculator
         private void CalculateButton_Click(object sender, EventArgs e)
         {
             BmiResultBox.Text = ""+bmi;
+            if (bmi < 18.5)
+            {
+                BmiScaleBox.Text = "Underweight";
+            }
+            else if(bmi>=18.5 && bmi <= 24.9)
+            {
+                BmiScaleBox.Text = "Normal";
+            }
+            else if(bmi>=25 && bmi <= 29.9)
+            {
+                BmiScaleBox.Text = "Overweight";
+            }
+            else if (bmi >= 30)
+            {
+                BmiScaleBox.Text = "Obese";
+            }
         }
 
         /// <summary>
