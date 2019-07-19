@@ -13,6 +13,7 @@ namespace BMI_Calculator
     public partial class BmiCalculator : Form
     {
         public TextBox clickedLabel;
+        public TextBox outputLabel;
         string outputString = "";
         public BmiCalculator()
         {
@@ -73,18 +74,47 @@ namespace BMI_Calculator
                 outputString += ".";
             }
         }
-
+        /// <summary>
+        /// event handler for load of form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BmiCalculator_Load(object sender, EventArgs e)
         {
             KeypadLayoutPanel.Visible = false;
+            MetricButton.Checked = true;
         }
-
+        /// <summary>
+        /// event handler for click on height or weight label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Label_Click(object sender, EventArgs e)
         {
             clickedLabel = sender as TextBox;
             KeypadLayoutPanel.Visible = true;
             clickedLabel.Text = "";
             outputString = "";
+        }
+        /// <summary>
+        /// event handler when metric radio button is checked 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MetricButton_CheckedChanged(object sender, EventArgs e)
+        {
+            HeightInputBox.Text = "m";
+            WeightInputBox.Text = "kg";
+        }
+        /// <summary>
+        /// event handler when imperical radio button is checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImpericalButton_CheckedChanged(object sender, EventArgs e)
+        {
+            HeightInputBox.Text = "in";
+            WeightInputBox.Text = "lb";
         }
     }
 }
