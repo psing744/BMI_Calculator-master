@@ -125,6 +125,7 @@
             this.HeightInputBox.Name = "HeightInputBox";
             this.HeightInputBox.Size = new System.Drawing.Size(145, 38);
             this.HeightInputBox.TabIndex = 2;
+            this.HeightInputBox.Tag = "height";
             this.HeightInputBox.Text = "m";
             this.HeightInputBox.Click += new System.EventHandler(this.Label_Click);
             // 
@@ -137,6 +138,7 @@
             this.WeightInputBox.Name = "WeightInputBox";
             this.WeightInputBox.Size = new System.Drawing.Size(145, 38);
             this.WeightInputBox.TabIndex = 2;
+            this.WeightInputBox.Tag = "weight";
             this.WeightInputBox.Text = "kg";
             this.WeightInputBox.Click += new System.EventHandler(this.Label_Click);
             // 
@@ -166,6 +168,7 @@
             this.CalculateButton.TabIndex = 3;
             this.CalculateButton.Text = "Calculate BMI";
             this.CalculateButton.UseVisualStyleBackColor = true;
+            this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
             // 
             // BMI_Label
             // 

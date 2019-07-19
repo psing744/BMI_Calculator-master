@@ -14,6 +14,9 @@ namespace BMI_Calculator
     {
         public TextBox clickedLabel;
         public TextBox outputLabel;
+        float height, weight;
+        bool imperical = false, metric = false;
+        float bmi;
         string outputString = "";
         public BmiCalculator()
         {
@@ -61,7 +64,26 @@ namespace BMI_Calculator
                         break;
                 }
             }
-            clickedLabel.Text = outputString;
+            if ((string)clickedLabel.Tag == "height")
+            {
+                clickedLabel.Text = outputString;
+                bool heightValidation;
+                heightValidation = float.TryParse(outputString, out height);
+            }
+            else if((string)clickedLabel.Tag == "weight")
+            {
+                clickedLabel.Text = outputString;
+                bool weightValidation;
+                weightValidation = float.TryParse(outputString, out weight);
+            }
+            if (metric)
+            {
+                bmi = weight / (height * height);
+            }
+            if (imperical)
+            {
+                bmi = weight * 703 / (height * height);
+            }
         }
         private void AddDecimal()
         {
@@ -83,6 +105,7 @@ namespace BMI_Calculator
         {
             KeypadLayoutPanel.Visible = false;
             MetricButton.Checked = true;
+            metric = true;
         }
         /// <summary>
         /// event handler for click on height or weight label
@@ -97,6 +120,16 @@ namespace BMI_Calculator
             outputString = "";
         }
         /// <summary>
+        /// event handler for click on calculate bmi button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CalculateButton_Click(object sender, EventArgs e)
+        {
+            BmiResultBox.Text = ""+bmi;
+        }
+
+        /// <summary>
         /// event handler when metric radio button is checked 
         /// </summary>
         /// <param name="sender"></param>
@@ -105,6 +138,8 @@ namespace BMI_Calculator
         {
             HeightInputBox.Text = "m";
             WeightInputBox.Text = "kg";
+            metric = true;
+            imperical = false;
         }
         /// <summary>
         /// event handler when imperical radio button is checked
@@ -115,6 +150,8 @@ namespace BMI_Calculator
         {
             HeightInputBox.Text = "in";
             WeightInputBox.Text = "lb";
+            imperical = true;
+            metric = false;
         }
     }
 }
