@@ -13,10 +13,8 @@ namespace BMI_Calculator
     public partial class BmiCalculator : Form
     {
         public TextBox clickedLabel;
-        public TextBox outputLabel;
-        float height, weight;
-        bool imperical = false, metric = false;
-        float bmi;
+        float height, weight, bmi;
+        bool imperical = false, metric = false; 
         string outputString = "";
         public BmiCalculator()
         {
@@ -64,18 +62,20 @@ namespace BMI_Calculator
                         break;
                 }
             }
+            clickedLabel.Text = outputString;
+
+            //assigns height and weight output to appropriate labels
             if ((string)clickedLabel.Tag == "height")
             {
-                clickedLabel.Text = outputString;
-                bool heightValidation;
-                heightValidation = float.TryParse(outputString, out height);
+                bool heightValidation = float.TryParse(outputString, out height);
             }
             else if((string)clickedLabel.Tag == "weight")
             {
-                clickedLabel.Text = outputString;
-                bool weightValidation;
-                weightValidation = float.TryParse(outputString, out weight);
+                bool weightValidation = float.TryParse(outputString, out weight);
             }
+
+            //formula for bmi calculation. 
+            //takes bool value according to imperical and metric radio button
             if (metric)
             {
                 bmi = weight / (height * height);
@@ -127,6 +127,8 @@ namespace BMI_Calculator
         private void CalculateButton_Click(object sender, EventArgs e)
         {
             BmiResultBox.Text = ""+bmi;
+
+            //output for bmi scale box
             if (bmi < 18.5)
             {
                 BmiScaleBox.Text = "Underweight";
