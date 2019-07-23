@@ -38,6 +38,8 @@
             this.BMI_Label = new System.Windows.Forms.Label();
             this.BmiResultBox = new System.Windows.Forms.TextBox();
             this.BmiScaleBox = new System.Windows.Forms.TextBox();
+            this.MetricButton = new System.Windows.Forms.RadioButton();
+            this.ImpericalButton = new System.Windows.Forms.RadioButton();
             this.KeypadLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.KeypadOneButton = new System.Windows.Forms.Button();
             this.KeypadTwoButton = new System.Windows.Forms.Button();
@@ -51,8 +53,7 @@
             this.KeypadZeroButton = new System.Windows.Forms.Button();
             this.KeypadDecimalButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
-            this.MetricButton = new System.Windows.Forms.RadioButton();
-            this.ImpericalButton = new System.Windows.Forms.RadioButton();
+            this.ResetButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.KeypadLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -76,6 +77,7 @@
             this.tableLayoutPanel1.Controls.Add(this.BmiScaleBox, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.MetricButton, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.ImpericalButton, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.ResetButton, 1, 4);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -161,12 +163,11 @@
             this.CalculateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.CalculateButton, 2);
             this.CalculateButton.Location = new System.Drawing.Point(3, 175);
             this.CalculateButton.Name = "CalculateButton";
-            this.CalculateButton.Size = new System.Drawing.Size(295, 37);
+            this.CalculateButton.Size = new System.Drawing.Size(144, 37);
             this.CalculateButton.TabIndex = 3;
-            this.CalculateButton.Text = "Calculate BMI";
+            this.CalculateButton.Text = "Calculate ";
             this.CalculateButton.UseVisualStyleBackColor = true;
             this.CalculateButton.Click += new System.EventHandler(this.CalculateButton_Click);
             // 
@@ -204,6 +205,39 @@
             this.BmiScaleBox.TabIndex = 5;
             this.BmiScaleBox.Text = "BMI Scale";
             this.BmiScaleBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // MetricButton
+            // 
+            this.MetricButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MetricButton.AutoSize = true;
+            this.MetricButton.Checked = true;
+            this.MetricButton.Location = new System.Drawing.Point(3, 46);
+            this.MetricButton.Name = "MetricButton";
+            this.MetricButton.Size = new System.Drawing.Size(144, 37);
+            this.MetricButton.TabIndex = 6;
+            this.MetricButton.TabStop = true;
+            this.MetricButton.Text = "Metric";
+            this.MetricButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MetricButton.UseVisualStyleBackColor = true;
+            this.MetricButton.CheckedChanged += new System.EventHandler(this.MetricButton_CheckedChanged);
+            // 
+            // ImpericalButton
+            // 
+            this.ImpericalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImpericalButton.AutoSize = true;
+            this.ImpericalButton.Location = new System.Drawing.Point(153, 46);
+            this.ImpericalButton.Name = "ImpericalButton";
+            this.ImpericalButton.Size = new System.Drawing.Size(145, 37);
+            this.ImpericalButton.TabIndex = 7;
+            this.ImpericalButton.TabStop = true;
+            this.ImpericalButton.Text = "Imperical";
+            this.ImpericalButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ImpericalButton.UseVisualStyleBackColor = true;
+            this.ImpericalButton.CheckedChanged += new System.EventHandler(this.ImpericalButton_CheckedChanged);
             // 
             // KeypadLayoutPanel
             // 
@@ -402,38 +436,18 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.Button_Click);
             // 
-            // MetricButton
+            // ResetButton
             // 
-            this.MetricButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MetricButton.AutoSize = true;
-            this.MetricButton.Checked = true;
-            this.MetricButton.Location = new System.Drawing.Point(3, 46);
-            this.MetricButton.Name = "MetricButton";
-            this.MetricButton.Size = new System.Drawing.Size(144, 37);
-            this.MetricButton.TabIndex = 6;
-            this.MetricButton.TabStop = true;
-            this.MetricButton.Text = "Metric";
-            this.MetricButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.MetricButton.UseVisualStyleBackColor = true;
-            this.MetricButton.CheckedChanged += new System.EventHandler(this.MetricButton_CheckedChanged);
-            // 
-            // ImpericalButton
-            // 
-            this.ImpericalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImpericalButton.AutoSize = true;
-            this.ImpericalButton.Location = new System.Drawing.Point(153, 46);
-            this.ImpericalButton.Name = "ImpericalButton";
-            this.ImpericalButton.Size = new System.Drawing.Size(145, 37);
-            this.ImpericalButton.TabIndex = 7;
-            this.ImpericalButton.TabStop = true;
-            this.ImpericalButton.Text = "Imperical";
-            this.ImpericalButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ImpericalButton.UseVisualStyleBackColor = true;
-            this.ImpericalButton.CheckedChanged += new System.EventHandler(this.ImpericalButton_CheckedChanged);
+            this.ResetButton.Location = new System.Drawing.Point(153, 175);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(145, 37);
+            this.ResetButton.TabIndex = 3;
+            this.ResetButton.Text = "Reset";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // BmiCalculator
             // 
@@ -484,6 +498,7 @@
         private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.RadioButton MetricButton;
         private System.Windows.Forms.RadioButton ImpericalButton;
+        private System.Windows.Forms.Button ResetButton;
     }
 }
 

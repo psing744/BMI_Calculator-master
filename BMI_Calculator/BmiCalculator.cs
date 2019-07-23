@@ -119,6 +119,24 @@ namespace BMI_Calculator
             clickedLabel.Text = "";
             outputString = "";
         }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            BmiScaleBox.Text = "BMI Scale";
+            BmiResultBox.Text = "";
+            outputString = "";
+            if (metric)
+            {
+                HeightInputBox.Text = "m";
+                WeightInputBox.Text = "kg";
+            }
+            else
+            {
+                HeightInputBox.Text = "in";
+                WeightInputBox.Text = "lb";
+            }
+        }
+
         /// <summary>
         /// event handler for click on calculate bmi button
         /// </summary>
