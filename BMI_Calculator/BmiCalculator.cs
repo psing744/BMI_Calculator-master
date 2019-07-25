@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BMI_Calculator
@@ -26,7 +20,7 @@ namespace BMI_Calculator
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button_Click(object sender, EventArgs e)
-        {          
+        {
             Button clicked_button = sender as Button;
             int numericValue;
             bool numericResult = int.TryParse(clicked_button.Text,out numericValue);
@@ -103,10 +97,11 @@ namespace BMI_Calculator
         /// <param name="e"></param>
         private void BmiCalculator_Load(object sender, EventArgs e)
         {
-            KeypadLayoutPanel.Visible = false;
+            BmiScaleBox.Multiline = true;
             MetricButton.Checked = true;
             metric = true;
-            //this.Size = new Size(320, 480);
+            KeypadLayoutPanel.Visible = false;
+            this.Size = new Size(320, 480);
         }
         /// <summary>
         /// event handler for click on height or weight label
@@ -116,6 +111,7 @@ namespace BMI_Calculator
         private void Label_Click(object sender, EventArgs e)
         {
             clickedLabel = sender as TextBox;
+            Animation.Enabled = true; //animation of keypad is enabled when textbox is clicked
             KeypadLayoutPanel.Visible = true;
             clickedLabel.Text = "";
             outputString = "";
@@ -141,6 +137,31 @@ namespace BMI_Calculator
         {
             BmiScaleBox.Text = "BMI Scale";
             BmiResultBox.Text = "";
+            KeypadLayoutPanel.Visible = false;
+        }
+
+        private void DoneButton_Click(object sender, EventArgs e)
+        {
+            KeypadLayoutPanel.Visible = false;
+        }
+
+        private void Animation_Tick(object sender, EventArgs e)
+        {
+            var currentLocation = KeypadLayoutPanel.Location;
+            KeypadLayoutPanel.Location = new Point(currentLocation.X, currentLocation.Y - 20);
+            if (KeypadLayoutPanel.Location.Y <= WeightLabel.Location.Y + 25)
+            {
+                Animation.Enabled = false;
+                if(KeypadLayoutPanel.Location.Y < WeightLabel.Location.Y + 25)
+                {
+                    KeypadLayoutPanel.Location = new Point(currentLocation.X, currentLocation.Y + 25);
+                }
+            }
+        }
+
+        private void BmiCalculator_Click(object sender, EventArgs e)
+        {
+            KeypadLayoutPanel.Visible = false;
         }
 
         /// <summary>

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.HeightLabel = new System.Windows.Forms.Label();
             this.WeightLabel = new System.Windows.Forms.Label();
@@ -54,6 +55,8 @@
             this.KeypadZeroButton = new System.Windows.Forms.Button();
             this.KeypadDecimalButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
+            this.DoneButton = new System.Windows.Forms.Button();
+            this.Animation = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.KeypadLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -71,10 +74,10 @@
             this.tableLayoutPanel1.Controls.Add(this.CalculateButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.BMI_Label, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.BmiResultBox, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.BmiScaleBox, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.MetricButton, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.ImpericalButton, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.ResetButton, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.BmiScaleBox, 0, 6);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -86,6 +89,8 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(301, 345);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -120,6 +125,7 @@
             this.HeightInputBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.HeightInputBox.BackColor = System.Drawing.Color.White;
             this.HeightInputBox.Location = new System.Drawing.Point(153, 89);
             this.HeightInputBox.Name = "HeightInputBox";
             this.HeightInputBox.ReadOnly = true;
@@ -134,8 +140,10 @@
             this.WeightInputBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.WeightInputBox.BackColor = System.Drawing.Color.White;
             this.WeightInputBox.Location = new System.Drawing.Point(153, 132);
             this.WeightInputBox.Name = "WeightInputBox";
+            this.WeightInputBox.ReadOnly = true;
             this.WeightInputBox.Size = new System.Drawing.Size(145, 38);
             this.WeightInputBox.TabIndex = 2;
             this.WeightInputBox.Tag = "weight";
@@ -198,6 +206,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.BmiScaleBox, 2);
             this.BmiScaleBox.Location = new System.Drawing.Point(3, 261);
             this.BmiScaleBox.Name = "BmiScaleBox";
+            this.BmiScaleBox.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.BmiScaleBox, 2);
             this.BmiScaleBox.Size = new System.Drawing.Size(295, 38);
             this.BmiScaleBox.TabIndex = 5;
@@ -254,20 +263,21 @@
             // 
             this.KeypadLayoutPanel.ColumnCount = 3;
             this.KeypadLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.KeypadLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.KeypadLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadOneButton, 0, 1);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadTwoButton, 1, 1);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadThreeButton, 2, 1);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadFourButton, 0, 2);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadFiveButton, 1, 2);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadSixButton, 2, 2);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadNineButton, 2, 3);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadEightButton, 1, 3);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadSevenButton, 0, 3);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadZeroButton, 1, 4);
-            this.KeypadLayoutPanel.Controls.Add(this.KeypadDecimalButton, 0, 4);
-            this.KeypadLayoutPanel.Controls.Add(this.BackButton, 2, 4);
+            this.KeypadLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.KeypadLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadOneButton, 0, 0);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadTwoButton, 1, 0);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadThreeButton, 2, 0);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadFourButton, 0, 1);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadFiveButton, 1, 1);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadSixButton, 2, 1);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadNineButton, 2, 2);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadEightButton, 1, 2);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadSevenButton, 0, 2);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadZeroButton, 1, 3);
+            this.KeypadLayoutPanel.Controls.Add(this.KeypadDecimalButton, 0, 3);
+            this.KeypadLayoutPanel.Controls.Add(this.BackButton, 2, 3);
+            this.KeypadLayoutPanel.Controls.Add(this.DoneButton, 0, 4);
             this.KeypadLayoutPanel.Location = new System.Drawing.Point(12, 363);
             this.KeypadLayoutPanel.Name = "KeypadLayoutPanel";
             this.KeypadLayoutPanel.RowCount = 5;
@@ -276,6 +286,8 @@
             this.KeypadLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.KeypadLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.KeypadLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.KeypadLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.KeypadLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.KeypadLayoutPanel.Size = new System.Drawing.Size(280, 242);
             this.KeypadLayoutPanel.TabIndex = 1;
             this.KeypadLayoutPanel.Tag = "decimal";
@@ -285,7 +297,7 @@
             this.KeypadOneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadOneButton.Location = new System.Drawing.Point(3, 51);
+            this.KeypadOneButton.Location = new System.Drawing.Point(3, 3);
             this.KeypadOneButton.Name = "KeypadOneButton";
             this.KeypadOneButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadOneButton.TabIndex = 0;
@@ -299,7 +311,7 @@
             this.KeypadTwoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadTwoButton.Location = new System.Drawing.Point(96, 51);
+            this.KeypadTwoButton.Location = new System.Drawing.Point(96, 3);
             this.KeypadTwoButton.Name = "KeypadTwoButton";
             this.KeypadTwoButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadTwoButton.TabIndex = 0;
@@ -313,7 +325,7 @@
             this.KeypadThreeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadThreeButton.Location = new System.Drawing.Point(189, 51);
+            this.KeypadThreeButton.Location = new System.Drawing.Point(189, 3);
             this.KeypadThreeButton.Name = "KeypadThreeButton";
             this.KeypadThreeButton.Size = new System.Drawing.Size(88, 42);
             this.KeypadThreeButton.TabIndex = 0;
@@ -327,7 +339,7 @@
             this.KeypadFourButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadFourButton.Location = new System.Drawing.Point(3, 99);
+            this.KeypadFourButton.Location = new System.Drawing.Point(3, 51);
             this.KeypadFourButton.Name = "KeypadFourButton";
             this.KeypadFourButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadFourButton.TabIndex = 0;
@@ -341,7 +353,7 @@
             this.KeypadFiveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadFiveButton.Location = new System.Drawing.Point(96, 99);
+            this.KeypadFiveButton.Location = new System.Drawing.Point(96, 51);
             this.KeypadFiveButton.Name = "KeypadFiveButton";
             this.KeypadFiveButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadFiveButton.TabIndex = 0;
@@ -355,7 +367,7 @@
             this.KeypadSixButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadSixButton.Location = new System.Drawing.Point(189, 99);
+            this.KeypadSixButton.Location = new System.Drawing.Point(189, 51);
             this.KeypadSixButton.Name = "KeypadSixButton";
             this.KeypadSixButton.Size = new System.Drawing.Size(88, 42);
             this.KeypadSixButton.TabIndex = 0;
@@ -369,7 +381,7 @@
             this.KeypadNineButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadNineButton.Location = new System.Drawing.Point(189, 147);
+            this.KeypadNineButton.Location = new System.Drawing.Point(189, 99);
             this.KeypadNineButton.Name = "KeypadNineButton";
             this.KeypadNineButton.Size = new System.Drawing.Size(88, 42);
             this.KeypadNineButton.TabIndex = 0;
@@ -383,7 +395,7 @@
             this.KeypadEightButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadEightButton.Location = new System.Drawing.Point(96, 147);
+            this.KeypadEightButton.Location = new System.Drawing.Point(96, 99);
             this.KeypadEightButton.Name = "KeypadEightButton";
             this.KeypadEightButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadEightButton.TabIndex = 0;
@@ -397,7 +409,7 @@
             this.KeypadSevenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadSevenButton.Location = new System.Drawing.Point(3, 147);
+            this.KeypadSevenButton.Location = new System.Drawing.Point(3, 99);
             this.KeypadSevenButton.Name = "KeypadSevenButton";
             this.KeypadSevenButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadSevenButton.TabIndex = 0;
@@ -411,9 +423,9 @@
             this.KeypadZeroButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadZeroButton.Location = new System.Drawing.Point(96, 195);
+            this.KeypadZeroButton.Location = new System.Drawing.Point(96, 147);
             this.KeypadZeroButton.Name = "KeypadZeroButton";
-            this.KeypadZeroButton.Size = new System.Drawing.Size(87, 44);
+            this.KeypadZeroButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadZeroButton.TabIndex = 0;
             this.KeypadZeroButton.Tag = "zero";
             this.KeypadZeroButton.Text = "0";
@@ -425,9 +437,9 @@
             this.KeypadDecimalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeypadDecimalButton.Location = new System.Drawing.Point(3, 195);
+            this.KeypadDecimalButton.Location = new System.Drawing.Point(3, 147);
             this.KeypadDecimalButton.Name = "KeypadDecimalButton";
-            this.KeypadDecimalButton.Size = new System.Drawing.Size(87, 44);
+            this.KeypadDecimalButton.Size = new System.Drawing.Size(87, 42);
             this.KeypadDecimalButton.TabIndex = 0;
             this.KeypadDecimalButton.Tag = "decimal";
             this.KeypadDecimalButton.Text = ".";
@@ -439,20 +451,40 @@
             this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackButton.Location = new System.Drawing.Point(189, 195);
+            this.BackButton.Location = new System.Drawing.Point(189, 147);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(88, 44);
+            this.BackButton.Size = new System.Drawing.Size(88, 42);
             this.BackButton.TabIndex = 1;
             this.BackButton.Tag = "back";
-            this.BackButton.Text = "Back";
+            this.BackButton.Text = "undo";
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // DoneButton
+            // 
+            this.DoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.KeypadLayoutPanel.SetColumnSpan(this.DoneButton, 3);
+            this.DoneButton.Location = new System.Drawing.Point(3, 195);
+            this.DoneButton.Name = "DoneButton";
+            this.DoneButton.Size = new System.Drawing.Size(274, 44);
+            this.DoneButton.TabIndex = 1;
+            this.DoneButton.Tag = "back";
+            this.DoneButton.Text = "Done";
+            this.DoneButton.UseVisualStyleBackColor = true;
+            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
+            // 
+            // Animation
+            // 
+            this.Animation.Interval = 16;
+            this.Animation.Tick += new System.EventHandler(this.Animation_Tick);
             // 
             // BmiCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 661);
+            this.ClientSize = new System.Drawing.Size(304, 441);
             this.Controls.Add(this.KeypadLayoutPanel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -464,6 +496,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMI Calculator";
             this.Load += new System.EventHandler(this.BmiCalculator_Load);
+            this.Click += new System.EventHandler(this.BmiCalculator_Click);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.KeypadLayoutPanel.ResumeLayout(false);
@@ -499,6 +532,8 @@
         private System.Windows.Forms.RadioButton MetricButton;
         private System.Windows.Forms.RadioButton ImpericalButton;
         private System.Windows.Forms.Button ResetButton;
+        private System.Windows.Forms.Button DoneButton;
+        private System.Windows.Forms.Timer Animation;
     }
 }
 
