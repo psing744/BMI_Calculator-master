@@ -8,6 +8,8 @@ namespace BMI_Calculator
 {
     static class Program
     {
+        public static StartForm startForm;
+        public static BmiCalculator mainform;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +18,9 @@ namespace BMI_Calculator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BmiCalculator());
+            startForm = new StartForm();
+            mainform = new BmiCalculator();
+            Application.Run(startForm);
         }
     }
 }

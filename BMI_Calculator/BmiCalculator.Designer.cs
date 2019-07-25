@@ -495,6 +495,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMI Calculator";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BmiCalculator_FormClosing);
             this.Load += new System.EventHandler(this.BmiCalculator_Load);
             this.Click += new System.EventHandler(this.BmiCalculator_Click);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -164,6 +164,11 @@ namespace BMI_Calculator
             KeypadLayoutPanel.Visible = false;
         }
 
+        private void BmiCalculator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
         /// <summary>
         /// event handler for click on calculate bmi button
         /// </summary>
