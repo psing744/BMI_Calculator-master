@@ -176,7 +176,7 @@ namespace BMI_Calculator
         /// <param name="e"></param>
         private void CalculateButton_Click(object sender, EventArgs e)
         {
-            BmiResultBox.Text = ""+bmi;
+            BmiResultBox.Text = "" + Math.Round(bmi, 2);
 
             //output for bmi scale box
             if (bmi < 18.5)
