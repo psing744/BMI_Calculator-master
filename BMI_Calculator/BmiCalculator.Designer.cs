@@ -192,6 +192,7 @@
             // 
             // BmiResultBox
             // 
+            this.BmiResultBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.BmiResultBox.Location = new System.Drawing.Point(153, 218);
             this.BmiResultBox.Name = "BmiResultBox";
             this.BmiResultBox.ReadOnly = true;
