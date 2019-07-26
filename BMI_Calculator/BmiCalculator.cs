@@ -14,6 +14,61 @@ namespace BMI_Calculator
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// event handler for load of form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BmiCalculator_Load(object sender, EventArgs e)
+        {
+            BmiScaleBox.Multiline = true;
+            MetricButton.Checked = true;
+            metric = true;
+            KeypadLayoutPanel.Visible = false;
+            this.Size = new Size(320, 480);
+        }
+
+        /// <summary>
+        /// event handler when metric radio button is checked 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MetricButton_CheckedChanged(object sender, EventArgs e)
+        {
+            clear();
+            HeightInputBox.Text = "m";
+            WeightInputBox.Text = "kg";
+            metric = true;
+            imperial = false;
+        }
+
+        /// <summary>
+        /// event handler when imperical radio button is checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ImpericalButton_CheckedChanged(object sender, EventArgs e)
+        {
+            clear();
+            HeightInputBox.Text = "in";
+            WeightInputBox.Text = "lb";
+            imperial = true;
+            metric = false;
+        }
+        /// <summary>
+        /// event handler for click on height or weight label
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Label_Click(object sender, EventArgs e)
+        {
+            clickedLabel = sender as TextBox;
+            Animation.Enabled = true; //animation of keypad is enabled when textbox is clicked
+            KeypadLayoutPanel.Visible = true;
+            clickedLabel.Text = "";
+            outputString = "";
+        }
         /// <summary>
         /// Event handler for click event of keypad
         /// </summary>
@@ -51,6 +106,9 @@ namespace BMI_Calculator
                         {
                             outputString = outputString.Remove(outputString.Length - 1);
                         }
+                        break;
+                    case "done":
+                        KeypadLayoutPanel.Visible = false;
                         break;
                     default:
                         break;
@@ -90,33 +148,12 @@ namespace BMI_Calculator
                 outputString += ".";
             }
         }
+        
         /// <summary>
-        /// event handler for load of form
+        /// event handler for click on reset button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BmiCalculator_Load(object sender, EventArgs e)
-        {
-            BmiScaleBox.Multiline = true;
-            MetricButton.Checked = true;
-            metric = true;
-            KeypadLayoutPanel.Visible = false;
-            this.Size = new Size(320, 480);
-        }
-        /// <summary>
-        /// event handler for click on height or weight label
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Label_Click(object sender, EventArgs e)
-        {
-            clickedLabel = sender as TextBox;
-            Animation.Enabled = true; //animation of keypad is enabled when textbox is clicked
-            KeypadLayoutPanel.Visible = true;
-            clickedLabel.Text = "";
-            outputString = "";
-        }
-
         private void ResetButton_Click(object sender, EventArgs e)
         {
             clear();
@@ -139,31 +176,11 @@ namespace BMI_Calculator
             BmiResultBox.Text = "";
             KeypadLayoutPanel.Visible = false;
         }
-
-        private void DoneButton_Click(object sender, EventArgs e)
-        {
-            KeypadLayoutPanel.Visible = false;
-        }
-
-        private void Animation_Tick(object sender, EventArgs e)
-        {
-            var currentLocation = KeypadLayoutPanel.Location;
-            KeypadLayoutPanel.Location = new Point(currentLocation.X, currentLocation.Y - 20);
-            if (KeypadLayoutPanel.Location.Y <= WeightLabel.Location.Y + 25)
-            {
-                Animation.Enabled = false;
-                if(KeypadLayoutPanel.Location.Y < WeightLabel.Location.Y + 25)
-                {
-                    KeypadLayoutPanel.Location = new Point(currentLocation.X, currentLocation.Y + 25);
-                }
-            }
-        }
-
-        private void BmiCalculator_Click(object sender, EventArgs e)
-        {
-            KeypadLayoutPanel.Visible = false;
-        }
-
+        /// <summary>
+        /// event handler for form closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BmiCalculator_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -197,31 +214,24 @@ namespace BMI_Calculator
             }
         }
 
+        
         /// <summary>
-        /// event handler when metric radio button is checked 
+        /// animation for keypad
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MetricButton_CheckedChanged(object sender, EventArgs e)
+        private void Animation_Tick(object sender, EventArgs e)
         {
-            clear();
-            HeightInputBox.Text = "m";
-            WeightInputBox.Text = "kg";
-            metric = true;
-            imperial = false;
-        }
-        /// <summary>
-        /// event handler when imperical radio button is checked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ImpericalButton_CheckedChanged(object sender, EventArgs e)
-        {
-            clear();
-            HeightInputBox.Text = "in";
-            WeightInputBox.Text = "lb";
-            imperial = true;
-            metric = false;
+            var currentLocation = KeypadLayoutPanel.Location;
+            KeypadLayoutPanel.Location = new Point(currentLocation.X, currentLocation.Y - 20);
+            if (KeypadLayoutPanel.Location.Y <= WeightLabel.Location.Y + 25)
+            {
+                Animation.Enabled = false;
+                if (KeypadLayoutPanel.Location.Y < WeightLabel.Location.Y + 25)
+                {
+                    KeypadLayoutPanel.Location = new Point(currentLocation.X, currentLocation.Y + 25);
+                }
+            }
         }
     }
 }

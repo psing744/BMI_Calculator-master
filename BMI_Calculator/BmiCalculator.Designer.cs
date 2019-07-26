@@ -38,10 +38,10 @@
             this.CalculateButton = new System.Windows.Forms.Button();
             this.BMI_Label = new System.Windows.Forms.Label();
             this.BmiResultBox = new System.Windows.Forms.TextBox();
-            this.BmiScaleBox = new System.Windows.Forms.TextBox();
             this.MetricButton = new System.Windows.Forms.RadioButton();
             this.ImpericalButton = new System.Windows.Forms.RadioButton();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.BmiScaleBox = new System.Windows.Forms.TextBox();
             this.KeypadLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.KeypadOneButton = new System.Windows.Forms.Button();
             this.KeypadTwoButton = new System.Windows.Forms.Button();
@@ -198,21 +198,6 @@
             this.BmiResultBox.Size = new System.Drawing.Size(100, 38);
             this.BmiResultBox.TabIndex = 4;
             // 
-            // BmiScaleBox
-            // 
-            this.BmiScaleBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.SetColumnSpan(this.BmiScaleBox, 2);
-            this.BmiScaleBox.Location = new System.Drawing.Point(3, 261);
-            this.BmiScaleBox.Name = "BmiScaleBox";
-            this.BmiScaleBox.ReadOnly = true;
-            this.tableLayoutPanel1.SetRowSpan(this.BmiScaleBox, 2);
-            this.BmiScaleBox.Size = new System.Drawing.Size(295, 38);
-            this.BmiScaleBox.TabIndex = 5;
-            this.BmiScaleBox.Text = "BMI Scale";
-            this.BmiScaleBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // MetricButton
             // 
             this.MetricButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -258,6 +243,21 @@
             this.ResetButton.Text = "Reset";
             this.ResetButton.UseVisualStyleBackColor = true;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            // 
+            // BmiScaleBox
+            // 
+            this.BmiScaleBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.SetColumnSpan(this.BmiScaleBox, 2);
+            this.BmiScaleBox.Location = new System.Drawing.Point(3, 261);
+            this.BmiScaleBox.Name = "BmiScaleBox";
+            this.BmiScaleBox.ReadOnly = true;
+            this.tableLayoutPanel1.SetRowSpan(this.BmiScaleBox, 2);
+            this.BmiScaleBox.Size = new System.Drawing.Size(295, 38);
+            this.BmiScaleBox.TabIndex = 5;
+            this.BmiScaleBox.Text = "BMI Scale";
+            this.BmiScaleBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // KeypadLayoutPanel
             // 
@@ -470,10 +470,10 @@
             this.DoneButton.Name = "DoneButton";
             this.DoneButton.Size = new System.Drawing.Size(274, 44);
             this.DoneButton.TabIndex = 1;
-            this.DoneButton.Tag = "back";
+            this.DoneButton.Tag = "done";
             this.DoneButton.Text = "Done";
             this.DoneButton.UseVisualStyleBackColor = true;
-            this.DoneButton.Click += new System.EventHandler(this.DoneButton_Click);
+            this.DoneButton.Click += new System.EventHandler(this.Button_Click);
             // 
             // Animation
             // 
@@ -484,7 +484,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 441);
+            this.ClientSize = new System.Drawing.Size(304, 561);
             this.Controls.Add(this.KeypadLayoutPanel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -497,7 +497,6 @@
             this.Text = "BMI Calculator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BmiCalculator_FormClosing);
             this.Load += new System.EventHandler(this.BmiCalculator_Load);
-            this.Click += new System.EventHandler(this.BmiCalculator_Click);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.KeypadLayoutPanel.ResumeLayout(false);
